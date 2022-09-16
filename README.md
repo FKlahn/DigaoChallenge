@@ -1,5 +1,5 @@
 # DigaoChallenge
-* Este Projeto consiste em uma Chalenge para o Digão
+* Este Projeto consiste em uma Challenge para o Digão
   * Itens Necessários para realizar a DigaoChallenge:
       * Digão
       * Computador com a DigaoChallenge
