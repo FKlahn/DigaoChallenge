@@ -11,7 +11,9 @@ public class SomaBasicaTest {
         Integer valor2 = 10;
         Integer resultadoEsperado = 17;
 
-        assertEquals(resultadoEsperado, DigaoChallenge.somaBasica(valor1, valor2));
+        Integer resultadoDoMetodo = DigaoChallenge.somaBasica(valor1, valor2);
+
+        assertEquals(resultadoEsperado, resultadoDoMetodo);
 
     }
 

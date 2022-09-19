@@ -1,5 +1,6 @@
 import exception.DigaoException;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -23,6 +24,9 @@ public class DigaoChallenge {
                     System.out.println("1+1 = " + calcularUmMaisUm());
                     break;
                 case 2:
+                    subMenuDaSomaBasica();
+                    break;
+                case 3:
                     break;
                 case 0:
                     isOnMainMenu = false;
@@ -43,13 +47,28 @@ public class DigaoChallenge {
      * Toda a lógica de cada desafio deve ser feita em seu método específico,
      * Você pode criar métodos para fazer submenus e pegar os valores necessários com o usuário para cada método
      * */
+
+    private static void subMenuDaSomaBasica() {
+        Integer valor1;
+        Integer valor2;
+
+        Scanner scannerSoma = new Scanner(System.in);
+        System.out.println("Digite o primeiro valor: ");
+        valor1 = scannerSoma.nextInt();
+
+        System.out.println("Digite o segundo valor: ");
+        valor2 = scannerSoma.nextInt();
+
+        System.out.println("O resultado da soma é: " + somaBasica(valor1, valor2));
+
+    }
     static Integer somaBasica(Integer valor1, Integer valor2) {
 
         if (valor1 == null || valor2 == null) {
             throw new DigaoException();
         }
 
-        return null;
+        return valor1 + valor2;
     }
 
     /*Array de Múltiplos
@@ -66,6 +85,11 @@ public class DigaoChallenge {
     public static int[] arrayDeMultiplos(int numero, int tamanho) {
 
         return new int[0];
+    }
+
+    public static void subMenuDoArrayDeMultiplos(){
+        Scanner sc = new Scanner(System.in);
+
     }
 
     /*Calculadora de Operações Básicas
@@ -89,8 +113,9 @@ public class DigaoChallenge {
      * Os resultados da divisão serão arredondados para um valor inteiro sempre pra baixo ex:
      *  8,99 se tornaria 8*/
     public static int calculadoraDeOperacoesBasicas(String numero1, String numero2, String operacao) {
-
+        /*para capturar a Exception vai precisar aprender try catch*/
         return 0;
+
     }
 
     /*Pedra Papel Tesoura
