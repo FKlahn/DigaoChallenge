@@ -87,11 +87,6 @@ public class DigaoChallenge {
         return new int[0];
     }
 
-    public static void subMenuDoArrayDeMultiplos(){
-        Scanner sc = new Scanner(System.in);
-
-    }
-
     /*Calculadora de Operações Básicas
      * Esta função recebe 3 parametros: 'numero1', 'numero2' e 'operacao'
      * 'operacao' pode receber os valores: somar - subtrair - multiplicar - dividir

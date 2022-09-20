@@ -76,15 +76,4 @@ public class CalculadoraDeOperacoesBasicasTest {
         assertEquals(-4, DigaoChallenge.calculadoraDeOperacoesBasicas("500.15", "-123.12", "dividir"));
     }
 
-    @Test
-    public void test15() {
-        double result;
-        try {
-            result = 3/0;
-        } catch (ArithmeticException e) {
-            result = 0;
-        }
-        System.out.println(result);
-    }
-
 }
