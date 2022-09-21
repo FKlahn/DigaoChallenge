@@ -5,7 +5,9 @@ public class ArrayDeMultiplosTest {
 
     @Test
     public void test1() {
-        assertArrayEquals(new int[] { 7, 14, 21, 28, 35 }, DigaoChallenge.arrayDeMultiplos(7, 5));
+        int[] arrayEsperado = new int[] { 7, 14, 21, 28, 35 };
+        int[] retornoDoMetodo = DigaoChallenge.arrayDeMultiplos(7, 5);
+        assertArrayEquals(arrayEsperado, retornoDoMetodo);
     }
 
     @Test

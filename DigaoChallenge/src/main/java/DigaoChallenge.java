@@ -1,6 +1,4 @@
 import exception.DigaoException;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -27,6 +25,7 @@ public class DigaoChallenge {
                     subMenuDaSomaBasica();
                     break;
                 case 3:
+                    subMenuDoArrayDeMultiplos();
                     break;
                 case 0:
                     isOnMainMenu = false;
@@ -74,8 +73,8 @@ public class DigaoChallenge {
     /*Array de Múltiplos
      * Esta função recebe 2 parametros: numero e tamanho e deve retornar um array dos multiplos da variavel 'número'
      * até que o array chegue no tamanho da variavel 'tamanho'
-     * Exemplo:
      *
+     * Exemplo:
      * arrayDeMultiplos(7, 5) ➞ [7, 14, 21, 28, 35]
      * arrayDeMultiplos(12, 10) ➞ [12, 24, 36, 48, 60, 72, 84, 96, 108, 120]
      *
@@ -84,7 +83,22 @@ public class DigaoChallenge {
      * Testes em: ArrayDeMultiplosTest*/
     public static int[] arrayDeMultiplos(int numero, int tamanho) {
 
-        return new int[0];
+        int[] array = new int[tamanho];
+
+        for (int i=0;i<tamanho;i++){
+            array[i] = numero * (i+1);
+        }
+        return array;
+    }
+
+    public static void subMenuDoArrayDeMultiplos(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Bem vindo à opção 3. Digite um número: ");
+        int number = sc.nextInt();
+        System.out.println("Número " + number + " escolhido. Digite a quantia de vezes que deseja ver os múltiplos dele:");
+        int size = sc.nextInt();
+
+        System.out.println("O array de multiplos é: " + Arrays.toString(arrayDeMultiplos(number, size)));
     }
 
     /*Calculadora de Operações Básicas
@@ -201,6 +215,6 @@ public class DigaoChallenge {
             atualizações
          */
         return Arrays.toString(arr).contains("7") ? "Boom!"
-                : "Não tem nenhum número 7 no array";
+                : "Bomba não acionada!";
     }
 }
