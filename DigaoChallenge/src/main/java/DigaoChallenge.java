@@ -159,7 +159,7 @@ public class DigaoChallenge {
                 "\n\t subtrair" +
                 "\n\t multiplicar" +
                 "\n\t dividir");
-        String operacao = new String();
+        String operacao = "";
         boolean valida = true;
         while (valida){
             operacao = sc.nextLine();
@@ -259,11 +259,11 @@ public class DigaoChallenge {
         }
 
         if (opcaoJogador1Invalida){
-            throw new DigaoException("Opção: " + opcaoJogador1 + " do Jogador 1 é inválida!");
+            throw new DigaoException(String.format("Opção: %s do Jogador 1 é inválida!", opcaoJogador1));
         }
 
         if (opcaoJogador2Invalida){
-            throw new DigaoException("Opção: " + opcaoJogador2 + " do Jogador 2 é inválida!");
+            throw new DigaoException(String.format("Opção: %s do Jogador 2 é inválida!", opcaoJogador2));
         }
 
     }
