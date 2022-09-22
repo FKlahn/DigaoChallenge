@@ -3,6 +3,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class DigitosEmComumTest {
+
     @Test
     public void test01() {
         assertTrue(DigaoChallenge.digitosEmComum(new int[] {12, 13, 17, 19, 79}));
