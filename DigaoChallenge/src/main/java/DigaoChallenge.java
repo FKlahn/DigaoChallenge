@@ -1,4 +1,7 @@
 import exception.DigaoException;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -15,6 +18,7 @@ public class DigaoChallenge {
                     "\n\t1: Calcular 1+1" +
                     "\n\t2: Soma básica entre 2 números" +
                     "\n\t3: Array de múltiplos" +
+                    "\n\t4: Calculadora de operações básicas" +
                     "\n\t0: Sair");
             option = numericScanner.nextInt();
             switch (option) {
@@ -27,9 +31,11 @@ public class DigaoChallenge {
                 case 3:
                     subMenuDoArrayDeMultiplos();
                     break;
+                case 4:
+                    subMenuDaCalculadoraDeSomaBasica();
                 case 0:
                     isOnMainMenu = false;
-                    System.out.println("Obrigado por me desafiar!");
+                    System.out.println("Thanks for challenge me!");
                     break;
                 default:
                     System.out.println("Opção inválida! Tente novamente");
@@ -42,11 +48,11 @@ public class DigaoChallenge {
         return 2;
     }
 
+
     /* Esse método é básico só para você se acostumar com a forma que o projeto funciona
      * Toda a lógica de cada desafio deve ser feita em seu método específico,
      * Você pode criar métodos para fazer submenus e pegar os valores necessários com o usuário para cada método
      * */
-
     private static void subMenuDaSomaBasica() {
         Integer valor1;
         Integer valor2;
@@ -61,6 +67,7 @@ public class DigaoChallenge {
         System.out.println("O resultado da soma é: " + somaBasica(valor1, valor2));
 
     }
+
     static Integer somaBasica(Integer valor1, Integer valor2) {
 
         if (valor1 == null || valor2 == null) {
@@ -69,7 +76,6 @@ public class DigaoChallenge {
 
         return valor1 + valor2;
     }
-
     /*Array de Múltiplos
      * Esta função recebe 2 parametros: numero e tamanho e deve retornar um array dos multiplos da variavel 'número'
      * até que o array chegue no tamanho da variavel 'tamanho'
@@ -81,6 +87,7 @@ public class DigaoChallenge {
      * Notas:
      * Note que o 'numero' também é retornado
      * Testes em: ArrayDeMultiplosTest*/
+
     public static int[] arrayDeMultiplos(int numero, int tamanho) {
 
         int[] array = new int[tamanho];
@@ -90,7 +97,6 @@ public class DigaoChallenge {
         }
         return array;
     }
-
     public static void subMenuDoArrayDeMultiplos(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Bem vindo à opção 3. Digite um número: ");
@@ -121,10 +127,70 @@ public class DigaoChallenge {
      * possa ocorrer, retorne Integer.MIN_VALUE
      * Os resultados da divisão serão arredondados para um valor inteiro sempre pra baixo ex:
      *  8,99 se tornaria 8*/
+
     public static int calculadoraDeOperacoesBasicas(String numero1, String numero2, String operacao) {
         /*para capturar a Exception vai precisar aprender try catch*/
-        return 0;
+        BigDecimal bdNumero1 = new BigDecimal(numero1);
+        BigDecimal bdNumero2 = new BigDecimal(numero2);
+        switch (operacao){
+            case "somar":
+                return soma(bdNumero1, bdNumero2);
+            case "subtrair":
+                return subtrair(bdNumero1, bdNumero2);
+            case "multiplicar":
+                return multiplicar(bdNumero1, bdNumero2);
+            case "dividir":
+                return dividir(bdNumero1, bdNumero2);
+        }
+        throw new DigaoException();
 
+    }
+
+    private static void subMenuDaCalculadoraDeSomaBasica() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Bem-vindo à opção 4! Calculadora de operações básicas, digite dois números");
+        String numero1 = sc.nextLine();
+        String numero2 = sc.nextLine();
+        System.out.println("Qual operação você deseja realizar?" +
+                "\n\t somar" +
+                "\n\t subtrair" +
+                "\n\t multiplicar" +
+                "\n\t dividir");
+        String operacao = new String();
+        boolean valida = true;
+        while (valida){
+            operacao = sc.nextLine();
+            if (operacao.equalsIgnoreCase("somar")
+                    || operacao.equalsIgnoreCase("subtrair")
+                    || operacao.equalsIgnoreCase("multiplicar")
+                    || operacao.equalsIgnoreCase("dividir")){
+                valida = false;
+            }else {
+                System.out.println("Operação inválida, tente novamente");
+            }
+        }
+        System.out.println("O resultado da sua operação é: " + calculadoraDeOperacoesBasicas(numero1, numero2, operacao.toLowerCase()));
+    }
+
+    //Creating subMethods to realize the operations
+    private static int soma(BigDecimal numero1, BigDecimal numero2){
+        return numero1.add(numero2).intValue();
+    }
+
+    private static int subtrair(BigDecimal numero1, BigDecimal numero2){
+        return numero1.subtract(numero2).intValue();
+    }
+
+    private static int multiplicar(BigDecimal numero1, BigDecimal numero2){
+        return numero1.multiply(numero2).intValue();
+    }
+
+    private static int dividir(BigDecimal numero1, BigDecimal numero2){
+        try {
+            return numero1.divide(numero2, RoundingMode.DOWN).intValue();
+        } catch (ArithmeticException e){
+            return Integer.MIN_VALUE;
+        }
     }
 
     /*Pedra Papel Tesoura

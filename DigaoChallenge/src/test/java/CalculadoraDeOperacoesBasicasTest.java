@@ -15,7 +15,7 @@ public class CalculadoraDeOperacoesBasicasTest {
 
     @Test
     public void test03() {
-        assertEquals(-2147483648,  DigaoChallenge.calculadoraDeOperacoesBasicas("9", "0", "dividir"));
+        assertEquals(Integer.MIN_VALUE,  DigaoChallenge.calculadoraDeOperacoesBasicas("9", "0", "dividir"));
     }
 
     @Test
@@ -65,7 +65,7 @@ public class CalculadoraDeOperacoesBasicasTest {
 
     @Test
     public void test13() {
-        assertEquals(0, DigaoChallenge.calculadoraDeOperacoesBasicas("13", "0", "dividir"));
+        assertEquals(Integer.MIN_VALUE, DigaoChallenge.calculadoraDeOperacoesBasicas("13", "0", "dividir"));
     }
 
     @Test
