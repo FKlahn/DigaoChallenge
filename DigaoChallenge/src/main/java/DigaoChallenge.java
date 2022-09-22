@@ -19,6 +19,7 @@ public class DigaoChallenge {
                     "\n\t2: Soma básica entre 2 números" +
                     "\n\t3: Array de múltiplos" +
                     "\n\t4: Calculadora de operações básicas" +
+                    "\n\t5: Pedra papel ou tesoura" +
                     "\n\t0: Sair");
             option = numericScanner.nextInt();
             switch (option) {
@@ -33,6 +34,8 @@ public class DigaoChallenge {
                     break;
                 case 4:
                     subMenuDaCalculadoraDeSomaBasica();
+                case 5:
+                    subMenuDePedraPapelOuTesoura();
                 case 0:
                     isOnMainMenu = false;
                     System.out.println("Thanks for challenge me!");
@@ -156,7 +159,7 @@ public class DigaoChallenge {
                 "\n\t subtrair" +
                 "\n\t multiplicar" +
                 "\n\t dividir");
-        String operacao = new String();
+        String operacao = "";
         boolean valida = true;
         while (valida){
             operacao = sc.nextLine();
@@ -198,7 +201,7 @@ public class DigaoChallenge {
      * a função terá os seguintes retornos baseado no resultado da partida:
      *           Jogador 1 Venceu! - Jogador 2 Venceu! - Empate!
      *
-     * as opções do jogadores podem ser pedra - papel - tesoura porém o jogo deve entender independente se tem caps lock ou não
+     * as opções dos jogadores podem ser pedra, papel, ou tesoura, porém o jogo deve entender independente se tem caps lock ou não
      * Se a opçao for inválida devera jogar uma DigãoException dizendo quais opções foram inválidas
      *
      * Exemplos:
@@ -208,7 +211,7 @@ public class DigaoChallenge {
      * pedraPapelTesoura("teSoura", "tesourA") ➞ "Empate!"
      * pedraPapelTesoura("tesourinha", "tesourA") ➞ DigaoException("Opção: tesourinha do Jogador 1 é inválida!")
      * pedraPapelTesoura("PAPEL", "robson") ➞ DigaoException("Opção: robson do Jogador 2 é inválida!")
-     * pedraPapelTesoura("teste", "aaaa") ➞ DigaoException("Ambas opções são inválidas, melhorem!")
+     * pedraPapelTesoura("josnel", "aaaa") ➞ DigaoException("Ambas opções são inválidas, melhorem!")
      *
      * Notas:
      * Pedra ganha de tesoura, papel ganha de pedra, tesoura ganha de papel
@@ -218,7 +221,62 @@ public class DigaoChallenge {
      * */
     public static String pedraPapelTesoura(String opcaoJogador1, String opcaoJogador2) {
 
-        return null;
+        validaOpcoes(opcaoJogador1, opcaoJogador2);
+
+        if (opcaoJogador1.equalsIgnoreCase(opcaoJogador2)){
+            return new String("Empate!");
+        }else if (opcaoJogador1.equalsIgnoreCase("papel") && opcaoJogador2.equalsIgnoreCase("tesoura")){
+            return new String("Jogador 2 Venceu!");
+        } else if (opcaoJogador1.equalsIgnoreCase("pedra") && opcaoJogador2.equalsIgnoreCase("papel")) {
+            return new String("Jogador 2 Venceu!");
+        } else if (opcaoJogador1.equalsIgnoreCase("tesoura") && opcaoJogador2.equalsIgnoreCase("pedra")) {
+            return new String("Jogador 2 Venceu!");
+        } else {
+            return new String("Jogador 1 Venceu!");
+        }
+
+    }
+
+    private static void validaOpcoes(String opcaoJogador1, String opcaoJogador2) {
+
+        boolean opcaoJogador1Invalida = false;
+        boolean opcaoJogador2Invalida = false;
+
+        if (!opcaoJogador1.equalsIgnoreCase("pedra")
+            && !opcaoJogador1.equalsIgnoreCase("papel")
+            && !opcaoJogador1.equalsIgnoreCase("tesoura")){
+            opcaoJogador1Invalida = true;
+        }
+
+        if(!opcaoJogador2.equalsIgnoreCase("pedra")
+            && !opcaoJogador2.equalsIgnoreCase("papel")
+            && !opcaoJogador2.equalsIgnoreCase("tesoura")){
+            opcaoJogador2Invalida = true;
+        }
+
+        if (opcaoJogador1Invalida && opcaoJogador2Invalida){
+            throw new DigaoException("Ambas opções são inválidas, melhorem!");
+        }
+
+        if (opcaoJogador1Invalida){
+            throw new DigaoException(String.format("Opção: %s do Jogador 1 é inválida!", opcaoJogador1));
+        }
+
+        if (opcaoJogador2Invalida){
+            throw new DigaoException(String.format("Opção: %s do Jogador 2 é inválida!", opcaoJogador2));
+        }
+
+    }
+
+    private static void subMenuDePedraPapelOuTesoura(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println(" Bem-vindo à opção 5. Pedra papel ou tesoura. Regras: " +
+                            "\n Jogador 1 começa e praticamente é só digitar se você quer pedra papel ou tesoura" +
+                            "\n Depois disso é a vez do Jogador 2 e se aplicam as mesmas validações. Boa sorte!");
+        String opcaoJogador1 = sc.nextLine();
+        String opcaoJogador2 = sc.nextLine();
+
+        System.out.println("Resultado: " + pedraPapelTesoura(opcaoJogador1, opcaoJogador2));
     }
 
     /*Digitos em comum
