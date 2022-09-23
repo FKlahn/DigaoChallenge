@@ -20,6 +20,7 @@ public class DigaoChallenge {
                     "\n\t3: Array de múltiplos" +
                     "\n\t4: Calculadora de operações básicas" +
                     "\n\t5: Pedra papel ou tesoura" +
+                    "\n\t7: SeteBoom" +
                     "\n\t0: Sair");
             option = numericScanner.nextInt();
             switch (option) {
@@ -36,6 +37,8 @@ public class DigaoChallenge {
                     subMenuDaCalculadoraDeSomaBasica();
                 case 5:
                     subMenuDePedraPapelOuTesoura();
+                case 7:
+                    subMenuDoSeteBoom();
                 case 0:
                     isOnMainMenu = false;
                     System.out.println("Thanks for challenge me!");
@@ -340,5 +343,26 @@ public class DigaoChallenge {
          */
         return Arrays.toString(arr).contains("7") ? "Boom!"
                 : "Bomba não acionada!";
+    }
+
+    public static void subMenuDoSeteBoom(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Bem-vindo à opção 7, SETE OU BOOM!");
+        System.out.println("Digite o tamanho do seu obejeto: ");
+        int tamanho = sc.nextInt();
+        int[] array = new int[tamanho];
+        System.out.println("Se a sequência tiver um 7, BOOM" +
+                            "\nSe não tiver, a bomba não é acionada!" +
+                            "\nDigite a sequência: ");
+
+        for (int i=0;i<tamanho;i++){
+            array[i] = sc.nextInt();
+        }
+
+        System.out.print("3...");
+        System.out.print("2...");
+        System.out.println("1...");
+        System.out.println(seteBoom(array));
+        //Thread.sleep(2000);
     }
 }
