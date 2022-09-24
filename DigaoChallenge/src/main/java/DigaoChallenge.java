@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class DigaoChallenge {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Scanner numericScanner = new Scanner(System.in);
         int option;
         boolean isOnMainMenu = true;
@@ -35,10 +35,13 @@ public class DigaoChallenge {
                     break;
                 case 4:
                     subMenuDaCalculadoraDeSomaBasica();
+                    break;
                 case 5:
                     subMenuDePedraPapelOuTesoura();
+                    break;
                 case 7:
                     subMenuDoSeteBoom();
+                    break;
                 case 0:
                     isOnMainMenu = false;
                     System.out.println("Thanks for challenge me!");
@@ -345,7 +348,7 @@ public class DigaoChallenge {
                 : "Bomba não acionada!";
     }
 
-    public static void subMenuDoSeteBoom(){
+    public static void subMenuDoSeteBoom() throws InterruptedException {
         Scanner sc = new Scanner(System.in);
         System.out.println("Bem-vindo à opção 7, SETE OU BOOM!");
         System.out.println("Digite o tamanho do seu obejeto: ");
@@ -359,10 +362,12 @@ public class DigaoChallenge {
             array[i] = sc.nextInt();
         }
 
-        System.out.print("3...");
-        System.out.print("2...");
+        System.out.println("3...");
+        Thread.sleep(2000);
+        System.out.println("2...");
+        Thread.sleep(2000);
         System.out.println("1...");
+        Thread.sleep(2000);
         System.out.println(seteBoom(array));
-        //Thread.sleep(2000);
     }
 }
