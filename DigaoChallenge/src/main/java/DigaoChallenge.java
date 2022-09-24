@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class DigaoChallenge {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Scanner numericScanner = new Scanner(System.in);
         int option;
         boolean isOnMainMenu = true;
@@ -20,6 +20,7 @@ public class DigaoChallenge {
                     "\n\t3: Array de múltiplos" +
                     "\n\t4: Calculadora de operações básicas" +
                     "\n\t5: Pedra papel ou tesoura" +
+                    "\n\t7: SeteBoom" +
                     "\n\t0: Sair");
             option = numericScanner.nextInt();
             switch (option) {
@@ -34,8 +35,13 @@ public class DigaoChallenge {
                     break;
                 case 4:
                     subMenuDaCalculadoraDeSomaBasica();
+                    break;
                 case 5:
                     subMenuDePedraPapelOuTesoura();
+                    break;
+                case 7:
+                    subMenuDoSeteBoom();
+                    break;
                 case 0:
                     isOnMainMenu = false;
                     System.out.println("Thanks for challenge me!");
@@ -340,5 +346,28 @@ public class DigaoChallenge {
          */
         return Arrays.toString(arr).contains("7") ? "Boom!"
                 : "Bomba não acionada!";
+    }
+
+    public static void subMenuDoSeteBoom() throws InterruptedException {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Bem-vindo à opção 7, SETE OU BOOM!");
+        System.out.println("Digite o tamanho do seu obejeto: ");
+        int tamanho = sc.nextInt();
+        int[] array = new int[tamanho];
+        System.out.println("Se a sequência tiver um 7, BOOM" +
+                            "\nSe não tiver, a bomba não é acionada!" +
+                            "\nDigite a sequência: ");
+
+        for (int i=0;i<tamanho;i++){
+            array[i] = sc.nextInt();
+        }
+
+        System.out.println("3...");
+        Thread.sleep(2000);
+        System.out.println("2...");
+        Thread.sleep(2000);
+        System.out.println("1...");
+        Thread.sleep(2000);
+        System.out.println(seteBoom(array));
     }
 }
