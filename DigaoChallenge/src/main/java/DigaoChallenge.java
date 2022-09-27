@@ -20,7 +20,9 @@ public class DigaoChallenge {
                     "\n\t3: Array de múltiplos" +
                     "\n\t4: Calculadora de operações básicas" +
                     "\n\t5: Pedra papel ou tesoura" +
+                    "\n\t6: Digitos em comum" +
                     "\n\t7: SeteBoom" +
+                    "\n\t8: Agradecimentos" +
                     "\n\t0: Sair");
             option = numericScanner.nextInt();
             switch (option) {
@@ -39,18 +41,28 @@ public class DigaoChallenge {
                 case 5:
                     subMenuDePedraPapelOuTesoura();
                     break;
+                case 6:
+                    subMenuDeDigitosEmComum();
+                    break;
                 case 7:
                     subMenuDoSeteBoom();
                     break;
+                case 8:
+                    agradecimentosEspeciais();
                 case 0:
                     isOnMainMenu = false;
-                    System.out.println("Thanks for challenge me!");
+                    System.out.println("\n\n\nThanks for challenge me!");
                     break;
                 default:
                     System.out.println("Opção inválida! Tente novamente");
                     break;
             }
         }
+    }
+
+    private static void agradecimentosEspeciais() {
+        System.out.println(" Meus agradecimentos especiais a Deus quem me permitiu adquirir sabedoria necessária" +
+                            "\n para conseguir completar a Challenge, e ao meu mestre, irmão e melhor amigo, Felipe Klahn Muniz Hedlund Martins quem me ajudou e incentivou durante toda a jornada!");
     }
 
     static int calcularUmMaisUm() {
@@ -316,7 +328,44 @@ public class DigaoChallenge {
      * 12345 e 6789 não tem digitos em comum*/
     public static boolean digitosEmComum(int[] numeros) {
 
-        return false;
+        for(int i=0;i<numeros.length-1;i++){
+            //digitosEmComum([1, 12, 123, 1234, 1235, 6789]) ➞ false
+            int valorAtual = numeros[i];
+            int valorSeguinte = numeros[i+1];
+            String valorAtualStr = String.valueOf(valorAtual);
+            String valorSeguinteStr = String.valueOf(valorSeguinte);
+            char[] valorseguinteCharArr = valorSeguinteStr.toCharArray();
+            boolean thereAreAnCharacterEqual = false;
+            for (char digito : valorseguinteCharArr) {
+                if (valorAtualStr.contains(String.valueOf(digito))){
+                    thereAreAnCharacterEqual = true;
+                    break;
+                }
+            }
+            if (!thereAreAnCharacterEqual){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void subMenuDeDigitosEmComum(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Bem-vindo à opção 6! Digitos em comum");
+        System.out.println("Como funciona? Digite uma sequência de números e os mesmos serão comparados" +
+                            "\nSe todos eles tiverem ao menos um digito em comum, isso retornará true, caso não hajam retornará false.");
+        int sequencia = sc.nextInt();
+        while (sequencia > 15){
+            System.out.println("Objeto muito grande, favor diminuir o valor");
+            sequencia = sc.nextInt();
+        }
+        int[] arrayInt = new int[sequencia];
+
+        for (int i=0;i<arrayInt.length;i++) {
+            System.out.println("Digite o número da posição: " + (i+1));
+            arrayInt[i] = sc.nextInt();
+        }
+        System.out.println("resultado: " + digitosEmComum(arrayInt));
     }
 
     /*
