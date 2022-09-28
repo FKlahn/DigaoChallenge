@@ -329,7 +329,6 @@ public class DigaoChallenge {
     public static boolean digitosEmComum(int[] numeros) {
 
         for(int i=0;i<numeros.length-1;i++){
-            //digitosEmComum([1, 12, 123, 1234, 1235, 6789]) ➞ false
             int valorAtual = numeros[i];
             int valorSeguinte = numeros[i+1];
             String valorAtualStr = String.valueOf(valorAtual);
