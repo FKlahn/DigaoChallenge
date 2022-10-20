@@ -2,13 +2,12 @@ package com.example.digao.api.services;
 
 import com.example.digao.api.exception.DigaoException;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.text.DecimalFormat;
 
 @Service
 public class CwiService {
-    public int pergunta02(@RequestParam(required = false)int[] arrayA, @RequestParam(required = false)int[] arrayB){
+    public int pergunta02(int[] arrayA, int[] arrayB){
         int repeatValues = 0;
 
         for (int i = 0; i < arrayA.length; i++){
@@ -23,7 +22,7 @@ public class CwiService {
         return repeatValues;
     }
 
-    public int pergunta02ForEach(@RequestParam(required = false)int[] arrayA, @RequestParam(required = false)int[] arrayB){
+    public int pergunta02ForEach(int[] arrayA, int[] arrayB){
         int repeatValues = 0;
 
         //Para cada valor valueA do tipo int dentro do arrayA
@@ -46,7 +45,7 @@ public class CwiService {
         return repeatValues;
     }
 
-    public double[] pergunta03(@RequestParam(required = false)double s){
+    public double[] pergunta03(double s){
         double aliquota;
         double taxa = 0;
         double[] valorRetorno = new double[3];
