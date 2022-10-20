@@ -1,16 +1,14 @@
 package com.example.digao.api.services;
 
-import exception.DigaoException;
+import com.example.digao.api.exception.DigaoException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.math.BigDecimal;
-import java.math.MathContext;
-import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
 @Service
 public class CwiService {
-    public int pergunta02(int[] arrayA, int[] arrayB){
+    public int pergunta02(@RequestParam(required = false)int[] arrayA, @RequestParam(required = false)int[] arrayB){
         int repeatValues = 0;
 
         for (int i = 0; i < arrayA.length; i++){
@@ -25,7 +23,7 @@ public class CwiService {
         return repeatValues;
     }
 
-    public int pergunta02ForEach(int[] arrayA, int[] arrayB){
+    public int pergunta02ForEach(@RequestParam(required = false)int[] arrayA, @RequestParam(required = false)int[] arrayB){
         int repeatValues = 0;
 
         //Para cada valor valueA do tipo int dentro do arrayA
@@ -48,7 +46,7 @@ public class CwiService {
         return repeatValues;
     }
 
-    public double[] pergunta03(double s){
+    public double[] pergunta03(@RequestParam(required = false)double s){
         double aliquota;
         double taxa = 0;
         double[] valorRetorno = new double[3];
@@ -72,23 +70,10 @@ public class CwiService {
             taxa = s * aliquota / 100;
         }
 
-            valorRetorno[0] = taxa;
-            valorRetorno[1] = taxa * 13.3;
-            valorRetorno[2] = s / taxa;
-
-            //BigDecimal bdS = new BigDecimal(s);
-            //MathContext math = new MathContext(4);
-
-        //Criado pattern para formatar o envio dos números dentro do array de double
-            DecimalFormat df = new DecimalFormat("####.##");
-
-        for (int i = 0; i < valorRetorno.length; i++){
-            valorRetorno[i] = Double.parseDouble(df.format(valorRetorno[i]));
-        }
-
-            /*for (int i = 0; i < valorRetorno.length; i++){
-                valorRetorno[i] = (double) Math.round(valorRetorno[i]);
-            }*/
+        DecimalFormat df = new DecimalFormat("####.##");
+        valorRetorno[0] = Double.parseDouble(df.format(taxa));
+        valorRetorno[1] = Double.parseDouble(df.format(taxa * 13.3));
+        valorRetorno[2] = Double.parseDouble(df.format(s / taxa));
 
         return valorRetorno;
     }
