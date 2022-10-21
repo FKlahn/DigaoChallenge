@@ -6,14 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="DigaoChallenge (1)" />
-        <module name="digao-challenge-parte-1" />
         <module name="digao.api" />
-        <module name="DigaoChallenge" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="DigaoChallenge (1)" target="1.8" />
+      <module name="digao.api" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
