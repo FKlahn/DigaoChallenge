@@ -29,4 +29,9 @@ public class CwiController {
     public double[] pergunta03(@RequestParam(required = false) double s) {
         return cwi.pergunta03(s);
     }
+
+    @GetMapping("/pergunta-04")
+    public int[] pergunta04(@RequestParam(required = false) int arrayDePontos[][], int ponto[]){
+        return cwi.pergunta04(arrayDePontos,ponto);
+    }
 }

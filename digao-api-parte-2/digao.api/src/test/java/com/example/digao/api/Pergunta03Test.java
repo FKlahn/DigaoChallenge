@@ -1,6 +1,6 @@
 package com.example.digao.api;
 
-import com.example.digao.api.exception.DigaoException;
+import com.example.digao.api.exception.DigaoApiException;
 import com.example.digao.api.services.CwiService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,7 +67,7 @@ public class Pergunta03Test {
 
     @Test
     public void test07(){
-        com.example.digao.api.exception.DigaoException exception = assertThrows(DigaoException.class, () ->{
+        com.example.digao.api.exception.DigaoApiException exception = assertThrows(DigaoApiException.class, () ->{
             cwi.pergunta03(0);
         });
         assertEquals("valor negativo ou nulo!", exception.getMessage());

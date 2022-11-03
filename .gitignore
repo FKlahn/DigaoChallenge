@@ -6,15 +6,21 @@
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # User-specific stuff
-*.idea
 .idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
 
+#DIGAO CHALLENGE
+*.iml
+*target
+*.idea
+*HELP.md
+
 #DIGAO CHALLENGE PARTE 1
 digao-api-parte-1/target
+digao-api-parte-1/*.idea
 
 #DIGÃO API PARTE 2
 digao-api-parte-2/.mvn
@@ -22,6 +28,7 @@ digao-api-parte-2/target
 digao-api-parte-2/HELP.md
 digao-api-parte-2/mvnw
 digao-api-parte-2/mvnw.cmd
+
 
 # AWS User-specific
 .idea/**/aws.xml

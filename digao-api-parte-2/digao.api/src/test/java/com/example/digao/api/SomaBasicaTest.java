@@ -1,7 +1,7 @@
 package com.example.digao.api;
 
-import com.example.digao.api.exception.DigaoException;
 import com.example.digao.api.services.DigaoService;
+import exception.DigaoException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

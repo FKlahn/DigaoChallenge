@@ -1,6 +1,7 @@
 package com.example.digao.api.services;
 
-import com.example.digao.api.exception.DigaoException;
+
+import exception.DigaoException;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
