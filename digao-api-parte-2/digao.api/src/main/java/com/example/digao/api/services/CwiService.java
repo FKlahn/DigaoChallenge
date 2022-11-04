@@ -1,6 +1,7 @@
 package com.example.digao.api.services;
 
-import com.example.digao.api.exception.DigaoException;
+import com.example.digao.api.exception.DigaoApiException;
+import exception.DigaoException;
 import org.springframework.stereotype.Service;
 
 import java.text.DecimalFormat;
@@ -45,13 +46,13 @@ public class CwiService {
         return repeatValues;
     }
 
-    public double[] pergunta03(double s){
+    public double[] pergunta03(double s) throws DigaoException {
         double aliquota;
         double taxa = 0;
         double[] valorRetorno = new double[3];
 
         if (s <= 0){
-            throw new DigaoException("valor negativo ou nulo!");
+            throw new DigaoApiException("valor negativo ou nulo!");
         } else if (s <= 1045) {
             aliquota = 7.50;
             taxa = s * aliquota / 100;
@@ -76,4 +77,29 @@ public class CwiService {
 
         return valorRetorno;
     }
+
+    public int[] pergunta04(int[][] arrayDePontos, int[] ponto){
+
+        int x0 = ponto[0];
+        int y0 = ponto[1];
+
+        double menorDistancia = Double.MAX_VALUE;
+        int[] menorPonto = new int[2];
+
+        for (int i = 0; i < arrayDePontos.length; i++){
+            int x1 = arrayDePontos[i][0];
+            int y1 = arrayDePontos[i][1];
+
+            double distancia = Math.sqrt(Math.pow(x1 - x0, 2) + Math.pow(y1 - y0, 2));
+
+            if (distancia < menorDistancia){
+                menorDistancia = distancia;
+                menorPonto[0] = x1;
+                menorPonto[1] = y1;
+            }
+        }
+
+        return menorPonto;
+    }
+
 }
